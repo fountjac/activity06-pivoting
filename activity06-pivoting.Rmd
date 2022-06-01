@@ -1,6 +1,6 @@
 ---
 title: "Activity 6"
-author: "Name"
+author: "Jackie Fountain"
 output: github_document
 ---
 
@@ -46,7 +46,8 @@ Now, why is `by_speaker` untidy data?
 How would this data be organized if it were tidy?
 Do not use any of your new `{tidyr}` skills yet, only describe it.
 
-**Response**: 
+
+**Response**: The data is spread across multiple columns, a tidy data set would have one season column instead.
 
 
 ![](README-img/noun_pause.png) **Planned Pause Point**: If you have any questions, contact your instructor. Otherwise feel free to continue on.
@@ -83,6 +84,19 @@ Remember that you can view the help documentation by using the `?` method in you
 3. Name your code chunk either `pivot_contains` or `pivot_ends` depending on which helper function you used.
 
 
+```{r pivot_contains}
+friends_tidy <- by_speaker %>% 
+  pivot_longer(
+    cols = contains("Season"),
+    names_to = "Season",
+    values_to = "Words"
+  )
+
+friends_tidy
+
+```
+
+
 
 
 ### Save the dataset
@@ -94,6 +108,9 @@ We can do this by writing it to a file within our directory.
 2. Call the file that is being created "`friends_tidy.csv`".
 3. Name your code chunk `writing_file`
 
+```{r writing_file}
+write_csv(friends_tidy,here::here("data","friends_tidy.csv"))
+```
 
 
 
@@ -112,6 +129,10 @@ This is the same information that we were just worked with, but structured in a 
 1. Write the code that reads in the data file.
 2. Assign this data file into meaningful objects.
 3. Name this code chunk `read_season_file`.
+```{r read_season_file}
+by_season <- read_csv(here::here("data", "by_season.csv"))
+
+```
 
 
 
@@ -121,6 +142,17 @@ Now,
 1. Pivot the `by_season` dataset so that it is now tidy,
 2. Assign it to an object called `speaker_tidy`, and
 3. Name the code chunk `pivot_speaker`.
+
+```{r pivot_speaker}
+speaker_tidy <- by_season %>%
+  pivot_longer(
+    cols= `Chandler`:`Ross`,
+      names_to="Character",
+      values_to="Words"
+  )
+
+speaker_tidy
+```
 
 
 
