@@ -240,27 +240,28 @@ describe (or code) how you would obtain the total number of words spoken
 by each season and the total words spoken across the series (challenge,
 can you display this information in one table?).
 
-**Response**:
+**Response**: sum()each season and n() for the total?
 
 If you were to use `by_speaker` and your skills from past activities,
 describe (or code) how you would obtain the total number of words spoken
 by each season and the total words spoken across the series (challenge,
 can you display this information in one table?).
 
-**Response**:
+**Response**: sum() by each character and n() for the total?
 
 If you were to use `friends_tidy` object and your skills from past
 activities, describe (or code) how you would obtain the total number of
 words spoken by each season and the total words spoken across the series
 (challenge, can you display this information in one table?).
 
-**Response**:
+**Response**: just sum() words
 
 How does the code for `friends_tidy` compare to the two `by_` code?
 Reflect on the process of writing this code and on the code itself.
 Which is easier to write? Which is easier to read?
 
-**Response**:
+**Response**: friends\_tidy is much easier to process. I like the by\_
+data sets aesthetically
 
 #### Preparing tables
 
@@ -300,6 +301,25 @@ friends_tidy %>%
 
 Write the code to take the tidy dataset and create one variable for each
 *speaker*. Call this code chunk `speaker_wide`.
+
+``` r
+friends_tidy %>%
+  pivot_wider(names_from=speaker, values_from=Words)
+```
+
+    ## # A tibble: 10 x 7
+    ##    Season    Chandler  Joey Monica Phoebe Rachel  Ross
+    ##    <chr>        <dbl> <dbl>  <dbl>  <dbl>  <dbl> <dbl>
+    ##  1 Season 1      8796  6195   7851   6522   8854 10569
+    ##  2 Season 2      8248  7207   7822   8713   8600  9382
+    ##  3 Season 3      8952  8504   8301   9177   8809 10725
+    ##  4 Season 4      9695  8541   7897   8560   9896  9178
+    ##  5 Season 5      8611  9731   8703   8695  10352  9234
+    ##  6 Season 6     10764 10923   8784   8372  11013 10307
+    ##  7 Season 7      8712  9777   9397   7910  11813  8960
+    ##  8 Season 8      6262 10695   8768   7688  11650 10295
+    ##  9 Season 9     10980  9318   9400   9397   9915 10482
+    ## 10 Season 10     6589  6886   6958   7420   7960  8289
 
 <img src="README-img/noun_pause.png" alt="pause" width = "20"/>
 <b>Planned Pause Point</b>: If you feel that you have a good
